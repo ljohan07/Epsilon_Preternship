@@ -22,7 +22,7 @@ EXE := exe
 mainObjs := $(OBJ)/main.o
 
 main: $(mainObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/main $(Lab4Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/main $(mainObjs)
 	$(EXE)/./main
 
 $(OBJ)/main.o: $(SRC)/main.cpp

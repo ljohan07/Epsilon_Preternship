@@ -1,15 +1,13 @@
 #include <cstdlib>
 #include <iostream>
 #include "DynArr.h"
+#include "advert.h"
 
 #define COUT std::cout
 #define ENDL std::endl
-#define RAND std::rand
 
-struct advert {
-	int price;
-	double time;
-};
+// for the time being, assign all prices to be $1
+// assume always gets deducted
 
 double perHour(int days, double budget)
 {
@@ -18,8 +16,15 @@ double perHour(int days, double budget)
   double budgetHour = budget/hours;
   COUT << "hours: " << hours << ENDL;
   COUT << "budget: " << budget << ENDL;
-  COUT << "budget/hour" << budgetHour << ENDL;
-  COUT << "random number: " << rand() << ENDL;
+  COUT << "budget/hour: " << budgetHour << ENDL;
   return budgetHour;
+}
 
+int createStream(DynArr<advert> * adStream)
+{
+	double time = rand()/RAND_MAX;
+	COUT << time << '\t';
+	advert ad(1, time, 1);
+	(*adStream).push_back(ad);
+	return 1;
 }
