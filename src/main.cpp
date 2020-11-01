@@ -12,9 +12,11 @@ int main()
 
   while(budget >= 1)
   {
-    createStream(&adStream);
-    budget -= 1;
+    budget -= createStream(&adStream);
   }
+  COUT << adStream.length() << ENDL << ENDL;
+
+  printStream(adStream);
 
   return 0;
 }

@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <iostream>
 #include "DynArr.h"
-#include "advert.h"
+#include "bidStrategy.cpp"
 
 #define COUT std::cout
 #define ENDL std::endl
@@ -20,12 +20,24 @@ double perHour(int days, double budget)
   return budgetHour;
 }
 
-int createStream(DynArr<advert> * adStream)
+double createStream(DynArr<advert> * adStream)
 {
 	double time = (double) rand()/RAND_MAX;
-	COUT << time << '\t';
+	//COUT << time << '\t';
 	advert ad(1, time, 1);
+	bidStrategy(&ad);
 	(*adStream).push_back(ad);
-	COUT << (*adStream).length() << ENDL;
-	return 1;
+	//COUT << (*adStream).length() << ENDL;
+	return ad.price;
+}
+
+void printStream(DynArr<advert> adStream)
+{
+	for(unsigned int i = 0; i < adStream.length(); i++)
+  {
+    COUT << adStream[i].price << ", ";
+    COUT << adStream[i].time << ", ";
+    COUT << adStream[i].winRate << ENDL;
+  }
+
 }

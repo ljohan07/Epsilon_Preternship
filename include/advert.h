@@ -1,5 +1,5 @@
 struct advert {
-	int price;
+	double price;
 	double time;
 	double winRate;
 
