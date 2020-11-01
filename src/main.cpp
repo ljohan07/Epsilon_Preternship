@@ -3,8 +3,8 @@
 
 int main()
 {
-  double budget = 50000;
-  int days = 27;
+  double budget = 50;
+  int days = 5;
   double budgetHour = perHour(days, budget);
   COUT << budgetHour << ENDL;
 
@@ -12,11 +12,9 @@ int main()
 
   while(budget >= 1)
   {
+    createStream(&adStream);
     budget -= 1;
   }
-
-  COUT << (float) rand() / RAND_MAX << ENDL;
-  COUT << (float) rand() / RAND_MAX << ENDL;
 
   return 0;
 }

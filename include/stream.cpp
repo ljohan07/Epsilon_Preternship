@@ -22,9 +22,10 @@ double perHour(int days, double budget)
 
 int createStream(DynArr<advert> * adStream)
 {
-	double time = rand()/RAND_MAX;
+	double time = (double) rand()/RAND_MAX;
 	COUT << time << '\t';
 	advert ad(1, time, 1);
 	(*adStream).push_back(ad);
+	COUT << (*adStream).length() << ENDL;
 	return 1;
 }
