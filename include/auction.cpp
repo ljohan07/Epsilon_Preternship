@@ -38,27 +38,22 @@ DynArr<advert> auction(DynArr<advert> * adStream, int days, double budget) {
     //Iterates through all the ads in that hour
     while( (adStream[index].time) < (3600 * (i + 1)) ){
       //Calculates whether we should bid on an ad
-      if(budgetPerHour >= bidStrategy)
-
+      if(budgetPerHour >= bidStrategy(adStream[index])){
+        //Setting the price equal to the bid strategy
+        adStream[index].price = bidStrategy(adStream[index]);
+      }
       // Creates random number to compare with win rate
       double probability = (double) rand()/RAND_MAX;
       // Finds the win rate of a single ad
       double winRate = auctionModel(adStream[index]);
-
+      if((winRate > probability) && (adStream[index].price != 0)){
+        successfulAds.push_back(adStream[index]);
+      }
       index++;
     }
+    return successfulAds;
   }
 
-
-  if(winRate > probability)
-  {
-    return *current_ad;
-  }
-  else
-  {
-    return NULL;
-  }
-}
 
 // returns the winRate for a given advertisement
 double auctionModel(advert * current_ad)
