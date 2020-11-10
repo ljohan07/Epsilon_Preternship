@@ -42,6 +42,7 @@ DynArr<advert> auction(DynArr<advert> adStream, int days, double budget) {
   //Iterates through the number of hours
   while(hours < (24*days))
 	{
+    // CHANGES WHAT DAY IT IS, ALLOWS US TO CALIBRATE REMAINING BUDGET IN CASE NOT ALL IS SPENT
 		if(hours % 24 == 0)
 		{
 			hourOfDay = 0;
@@ -51,6 +52,8 @@ DynArr<advert> auction(DynArr<advert> adStream, int days, double budget) {
       }
 			//COUT << "NEW DAY" << ENDL;
 		}
+
+    // CHANGES THE BUDGET EVERY HOUR SO THAT THINGS CAN BE EVENLY SPREAD
     double budgetPerHour = perDay(daycount, budget)/(24-hourOfDay);
 
   	if(daycount == 5)
@@ -59,11 +62,14 @@ DynArr<advert> auction(DynArr<advert> adStream, int days, double budget) {
       COUT << "\thour: " << hourOfDay << "\t budgetPerHour: " << budgetPerHour << ENDL;
     }
 
+    // TESTING JUST FOR ONE DAY FOR NOW
 
 		//while( (adStream[index].time) < (3600 * (hours + 1)) )
     while( (adStream[index].time) < 3600*24 )
 		{
       //COUT << "\t\t\t" << adStream[index].time << ENDL;
+
+      // SETTING THE PRICE
     	if(budgetPerHour >= 1)
 			{
         COUT << "setting price...\n";
@@ -74,6 +80,11 @@ DynArr<advert> auction(DynArr<advert> adStream, int days, double budget) {
         adStream[index].price = 0;
       }
       //COUT << adStream[index].price << ", " << adStream[index].time << ENDL;
+
+
+      // CALCULATING PROBABILITY AND WINRATE
+      // FOR TESTING PURPOSES, WINRATE IS SET TO 1, BUT ADS ARE NOT BEING ADDED TO LIST
+
     	double probability = (double) rand()/RAND_MAX;
     	double winRate = auctionModel(&adStream[index]);
       //COUT << "\t" << adStream[index].price << ", " << adStream[index].time <<", " << probability << ENDL;
@@ -84,6 +95,7 @@ DynArr<advert> auction(DynArr<advert> adStream, int days, double budget) {
     	}
     	index++;
 
+      // WITH BUDGET OF 5 AND 5 DAYS, ALGORITHM ***SHOULD*** BE ADDING IN THE LAST HOUR OF THE DAY, BUT IT ISN'T WORKING
       if(hours == 23)
       {
         COUT << "\t" << adStream[index].time  << ENDL;
@@ -94,6 +106,8 @@ DynArr<advert> auction(DynArr<advert> adStream, int days, double budget) {
         hourOfDay++;
       }*/
   	}
+    // HOURS IS TOTAL HOURS
+    // HOUR OF DAY IS WHAT HOUR OF THAT DAY
     hours++;
     hourOfDay++;
 
