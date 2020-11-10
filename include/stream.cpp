@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <iostream>
 #include "DynArr.h"
-#include "bidStrategy.cpp"
+#include "advert.h"
 
 #define COUT std::cout
 #define ENDL std::endl
@@ -20,7 +20,7 @@ void createEvent(DynArr<advert> * adStream, int days)
 	{
 		advert prev_ad = adStream->end();
 		time = prev_ad.time;
-		COUT << "previous time: " << time << ENDL;
+		//COUT << "previous time: " << time << ENDL;
 		time += (double) rand()/RAND_MAX;
 		ad.price = 1;
 		ad.time = time;
