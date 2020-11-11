@@ -13,7 +13,7 @@ void createEvent(DynArr<advert> * adStream, int days)
 {
 	double seconds = days*24*60*60.0;
 	double time = 0;
-	advert ad(1, time);
+	advert ad(0, time);
 	(*adStream).push_back(ad);
 
 	while(time <= seconds)
@@ -22,7 +22,7 @@ void createEvent(DynArr<advert> * adStream, int days)
 		time = prev_ad.time;
 		//COUT << "previous time: " << time << ENDL;
 		time += (double) rand()/RAND_MAX;
-		ad.price = 1;
+		ad.price = 0;
 		ad.time = time;
 		(*adStream).push_back(ad);
 	}

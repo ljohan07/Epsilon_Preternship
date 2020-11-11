@@ -6,6 +6,4 @@ struct advert {
 
   advert(int priceIn, double timeIn): price(priceIn), time(timeIn){}
 
-
-
 };
